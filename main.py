@@ -1,6 +1,7 @@
 import PySimpleGUI as sg
 import os
 
+from lab1.main import lab1
 
 if __name__ == "__main__":
     lab1_button = sg.Button("lab 1", key="1", disabled=not os.path.isfile("lab1/main.py"))
@@ -12,24 +13,29 @@ if __name__ == "__main__":
     lab7_button = sg.Button("lab 7", key="7", disabled=not os.path.isfile("lab7/main.py"))
     lab8_button = sg.Button("lab 8", key="8", disabled=not os.path.isfile("lab8/main.py"))
     exit_button = sg.Button("wyjście", key="exit")
+    home_button = sg.Button("Menu", key="home", visible=False)
+    main_frame = sg.Frame("", [
+        [sg.Push(), lab1_button, sg.Push()], 
+        [sg.Push(), lab2_button, sg.Push()], 
+        [sg.Push(), lab3_button, sg.Push()], 
+        [sg.Push(), lab4_button, sg.Push()], 
+        [sg.Push(), lab5_button, sg.Push()], 
+        [sg.Push(), lab6_button, sg.Push()], 
+        [sg.Push(), lab7_button, sg.Push()], 
+        [sg.Push(), lab8_button, sg.Push()],
+    ], key="-FRAME-")
     layout = [
-      [sg.Push(), lab1_button, sg.Push()], 
-      [sg.Push(), lab2_button, sg.Push()], 
-      [sg.Push(), lab3_button, sg.Push()], 
-      [sg.Push(), lab4_button, sg.Push()], 
-      [sg.Push(), lab5_button, sg.Push()], 
-      [sg.Push(), lab6_button, sg.Push()], 
-      [sg.Push(), lab7_button, sg.Push()], 
-      [sg.Push(), lab8_button, sg.Push()],
-      [sg.Push(), exit_button, sg.Push()]
+        [sg.Push(), home_button, sg.Push()], 
+        [sg.Push(), main_frame, sg.Push()], 
+        [sg.Push(), exit_button, sg.Push()]
     ]
     window = sg.Window("145019", layout)
     event = ""
     while event not in [sg.WIN_CLOSED, "exit"]:
         event, vaules = window.read()
-        # if event == "1":
-        #     lab1(window)
-        #     continue
+        if event == "1":
+            lab1(window)
+            continue
         # if event == "2":
         #     lab2(window)
         #     continue
