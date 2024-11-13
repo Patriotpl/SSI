@@ -3,6 +3,7 @@ import os
 
 from lab1.main import lab1
 from lab2.main import lab2
+from lab3.main import lab3
 
 if __name__ == "__main__":
     lab1_button = sg.Button("lab 1", key="1", disabled=not os.path.isfile("lab1/main.py"))
@@ -40,9 +41,9 @@ if __name__ == "__main__":
         if event == "2":
             lab2(window)
             continue
-        # if event == "3":
-        #     lab3(window)
-        #     continue
+        if event == "3":
+            lab3(window)
+            continue
         # if event == "4":
         #     lab4(window)
         #     continue
