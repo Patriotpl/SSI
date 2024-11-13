@@ -2,6 +2,7 @@ import PySimpleGUI as sg
 import os
 
 from lab1.main import lab1
+from lab2.main import lab2
 
 if __name__ == "__main__":
     lab1_button = sg.Button("lab 1", key="1", disabled=not os.path.isfile("lab1/main.py"))
@@ -36,9 +37,9 @@ if __name__ == "__main__":
         if event == "1":
             lab1(window)
             continue
-        # if event == "2":
-        #     lab2(window)
-        #     continue
+        if event == "2":
+            lab2(window)
+            continue
         # if event == "3":
         #     lab3(window)
         #     continue
