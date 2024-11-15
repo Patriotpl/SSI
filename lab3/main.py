@@ -3,6 +3,7 @@ import json
 
 
 from lab3.zad1 import probki_str_na_liczby, ColumnsNotEvenException
+from lab3.zad2 import k_means
 
 def lab3(window: sg.Window) -> None:
     window["-FRAME-"].update(visible=False)
@@ -18,12 +19,16 @@ def lab3(window: sg.Window) -> None:
         output_button = sg.Button("Pokaz", key="-SHOW-")
         input_col = sg.Column([[input_frame], [sg.Push(), output_button]], key="-INPUT_COL-")
         output_col = sg.Column([[]], key="-OUTPUT_COL-")
-        window.extend_layout(window, [[input_col, output_col]])
+        zad1_frame = sg.Frame("Zad 1", [[input_col, output_col]], key="-ZAD1-")
+        n_text = sg.Text("Podaj liczbe iteracji:")
+        n_input = sg.Spin([i for i in range(10000)], size=(10, 1))
+        zad2_frame = sg.Frame("Zad 2", [[n_text, n_input]], key="-ZAD2-")
+        window.extend_layout(window, [[zad1_frame], [zad2_frame]])
     else:
-        window["-IN_FRAME3-"].update(visible=True)
+        window["-ZAD1-"].update(visible=True)
+        window["-ZAD2-"].update(visible=True)
         window["home"].update(visible=True)
         window["-FRAME-"].update(visible=False)
-        window["-OUTPUT_COL-"].update(visible=True)
         output_col = window["-OUTPUT_COL-"]
     
     event = ""
@@ -72,8 +77,8 @@ def lab3(window: sg.Window) -> None:
             )
             window.extend_layout(output_col, [[table]])
         elif event == "home":
-            window["-IN_FRAME3-"].update(visible=False)
-            window["-OUTPUT_COL-"].update(visible=False)
+            window["-ZAD1-"].update(visible=False)
+            window["-ZAD2-"].update(visible=False)
             window["home"].update(visible=False)
             window["-FRAME-"].update(visible=True)
             break
