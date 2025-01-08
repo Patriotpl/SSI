@@ -77,4 +77,4 @@ for i in range(len(TESTS)):
         metrics.append(-(unsimilaritiy_a_b + unsimilaritiy_b_a))
 
     print(f"najbardziej podobny szablon: {metrics.index(max(metrics)) + 1}")
-    print() # test
+    print()
